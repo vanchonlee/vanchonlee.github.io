@@ -93,12 +93,6 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
 - Reduced deployment time from 45 minutes to 10 minutes
 - Established best practices and documentation standards
 
-## 📜 Certifications
-- AWS Solutions Architect Professional
-- CKA (Certified Kubernetes Administrator)
-- CKAD (Certified Kubernetes Application Developer)
-- Google Cloud Professional DevOps Engineer
-
 ## 📫 Contact
 - Email: vanchonlee@gmail.com
 - LinkedIn: www.linkedin.com/in/chonle-devops-sre
