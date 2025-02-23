@@ -57,6 +57,9 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
   - Developed service mesh configurations for local traffic prioritization
 - **Impact**: Achieved 30% monthly cloud cost savings, reduced cross-AZ traffic by 65%
 
+### Reduced 70% of cost of the Datadog
+- The developed service collects metrics from Prometheus and pushes them to Datadog, helping us reduce the cost of Datadog custom metrics by 70%.
+
 ### Observability & Monitoring
 #### Observability Platform Enhancement (2021-2022)
 - Designed and implemented monitoring stack using Prometheus, Datadog
