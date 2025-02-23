@@ -27,6 +27,10 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
   - GitLab CI
   - GitHub Actions
   - ArgoCD
+  - ArgoWorkflow
+  - ArgoRollouts
+  - ArgoEvents
+
 
 ### Security & Compliance
 - **Security Tools**: Vault, CertManager, OPA
@@ -70,7 +74,7 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
 ### Operational Excellence
 #### Production System Reliability
 - Maintained 99.99% uptime for production systems
-- Led 24/7 on-call rotation and incident response:
+- 24/7 on-call rotation and incident response:
   - Average resolution time of 15 minutes
   - Established incident management playbooks and runbooks
   - Implemented automated incident response procedures:
@@ -92,7 +96,6 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
   - Implemented routine maintenance automation
 
 ### Leadership
-- Successfully mentored 5 junior engineers
 - Reduced deployment time from 45 minutes to 10 minutes
 - Established best practices and documentation standards
 
