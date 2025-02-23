@@ -61,6 +61,15 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
   - Developed service mesh configurations for local traffic prioritization
 - **Impact**: Achieved 30% monthly cloud cost savings, reduced cross-AZ traffic by 65%
 
+#### Monasca OpenStack Performance Optimization (2021)
+- Optimized Monasca OpenStack monitoring system to handle 10,000 RPS:
+  - Developed custom API service to improve request handling
+  - Implemented Kong API Gateway for authentication and rate limiting:
+    - Centralized authentication mechanism using Kong
+    - Configured rate limiting and request throttling
+    - Improved request routing and load balancing
+- **Impact**: Increased system throughput from 1,000 RPS to 10,000 RPS, enabling large-scale monitoring
+
 ### Reduced 70% of cost of the Datadog
 - The developed service collects metrics from Prometheus and pushes them to Datadog, helping us reduce the cost of Datadog custom metrics by 70%.
 
