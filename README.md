@@ -100,7 +100,7 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
     - Created cross-region backup replication
     - Built one-click backup/restore web interface
     - Automated backup verification and monitoring
-  - Developed automated certificate rotation system
+  - Developed a workflow to automate replace docker image public to private in the kubernetes cluster, automatically update the image in the kubernetes cluster and push to the private registry
   - Created user access management and audit system
   - Implemented routine maintenance automation
 
