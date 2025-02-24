@@ -1,114 +1,72 @@
-# ChonLe - Senior Site Reliability Engineer / DevOps Engineer
+# OpenSearch Autoscaling Operator for Kubernetes
 
-## 👨‍💻 About Me
-Senior SRE/DevOps Engineer with 5 years of experience in building and operating large-scale cloud-native systems. Expertise in automation, infrastructure as code, and cloud architecture on AWS and GCP platforms.
+## Tổng quan dự án
+Một Kubernetes operator tùy chỉnh được phát triển để tự động điều chỉnh quy mô cụm OpenSearch dựa trên các chỉ số sử dụng và lịch trình được định nghĩa trước. Operator này giúp tối ưu hóa hiệu suất và chi phí bằng cách tự động mở rộng/thu hẹp số lượng node dữ liệu OpenSearch.
 
-## 🛠 Technical Skills
+## Các tính năng chính
+- **Tự động điều chỉnh quy mô thông minh**: Tự động điều chỉnh số lượng node dữ liệu dựa trên mức sử dụng CPU và bộ nhớ
+- **Lập lịch linh hoạt**: Hỗ trợ lập lịch tăng/giảm quy mô theo thời gian với cú pháp cron
+- **Cơ chế ổn định**: Cửa sổ ổn định có thể cấu hình để tránh thay đổi quy mô quá thường xuyên
+- **Giám sát và Metrics**: Tích hợp với hệ thống metrics để theo dõi hiệu suất và quyết định điều chỉnh quy mô
+- **Hỗ trợ nhiều môi trường**: Có thể triển khai trên cả AWS OpenSearch và OpenSearch tự host trên Kubernetes
 
-### Cloud Platforms & Infrastructure
-- **AWS**: Extensive experience with EKS, EC2, RDS, S3, CloudFront, Route53
-- **GCP**: Expertise in GKE, Compute Engine, Cloud Storage, Cloud SQL
-- **Kubernetes**: Deployment and management of EKS/GKE clusters, helm charts, custom controllers
-- **Infrastructure as Code**: Terraform, CloudFormation
-- **Container Technologies**: Docker, Containerd, Kubernetes
+## Kiến trúc kỹ thuật
 
-### Monitoring & Observability
-- **Monitoring Stack**: Prometheus, Grafana, AlertManager, Datadog
-- **Logging**: ELK Stack, Datadog, OpenTelemetry
-- **Tracing**: Datadog, OpenTelemetry
-- **Metrics**: Custom metrics collection, SLO/SLI implementation
+### Thành phần chính
 
-### Development & Automation
-- **Programming Languages**: 
-  - Golang: Development of internal tools and operators
-  - Python: Automation scripts and tooling
-  - Bash: Shell scripting for automation
-- **CI/CD**: 
-  - GitLab CI
-  - GitHub Actions
-  - ArgoCD
-  - ArgoWorkflow
-  - ArgoRollouts
-  - ArgoEvents
+1. **OpenSearch Controller**
+   - Xử lý reconciliation loop chính
+   - Quản lý vòng đời của các tài nguyên OpenSearch
+   - Thực hiện các quyết định điều chỉnh quy mô
 
+2. **Evaluator**
+   - Tính toán số lượng node mong muốn dựa trên metrics
+   - Áp dụng các ràng buộc và quy tắc điều chỉnh quy mô
+   - Xử lý cửa sổ ổn định
 
-### Security & Compliance
-- **Security Tools**: Vault, CertManager, OPA
-- **Network Security**: VPC design, Security Groups, NACLs
-- **Compliance**: ISO 27001, SOC2 implementation experience
+3. **Metrics Client**
+   - Thu thập metrics sử dụng
+   - Đẩy metrics về trạng thái hệ thống
+   - Hỗ trợ ra quyết định điều chỉnh quy mô
 
-## 🚀 Key Projects & Achievements
+### Quy trình hoạt động
+1. Controller theo dõi các tài nguyên OpenSearch
+2. Thu thập metrics về mức sử dụng
+3. Evaluator tính toán số lượng node mong muốn
+4. Áp dụng các ràng buộc và cửa sổ ổn định
+5. Thực hiện điều chỉnh quy mô thông qua API
 
-### Platform Engineering
-#### Kubernetes Platform Automation (2022-2023)
-- Built an automated platform for EKS cluster provisioning
-- Developed Golang operators for automated resource management:
-  - Created custom OpenSearch autoscaling operator
-  - Implemented intelligent scaling based on resource metrics and search patterns
-  - Built monitoring and alerting for scaling events:
-    - Prometheus metrics for cluster scaling operations
-    - Grafana dashboards for visualizing scaling patterns
-    - Real-time alerts for scaling failures or threshold breaches
-- Implemented GitOps workflow with ArgoCD
-- **Impact**: Reduced infrastructure provisioning time by 70%, increased developer productivity by 50%
+### Công nghệ sử dụng
+- **Go**: Ngôn ngữ lập trình chính
+- **Kubernetes**: Nền tảng container orchestration
+- **OpenSearch**: Distributed search engine
+- **controller-runtime**: Framework phát triển Kubernetes operators
+- **AWS SDK**: Tương tác với AWS OpenSearch Service
+- **Prometheus**: Thu thập và lưu trữ metrics
 
-### Infrastructure Optimization
-#### Cloud Cost Optimization Initiative (2020-2021)
-- Developed tools for cloud cost tracking and optimization:
-  - Built DNS proxy service to reduce cross-AZ traffic costs
-  - Implemented intelligent DNS caching and request routing
-  - Created tools to optimize data transfer between regions
-  - Developed service mesh configurations for local traffic prioritization
-- **Impact**: Achieved 30% monthly cloud cost savings, reduced cross-AZ traffic by 65%
+## Kết quả và tác động
+- Giảm chi phí vận hành bằng cách tự động điều chỉnh tài nguyên
+- Cải thiện hiệu suất hệ thống thông qua việc điều chỉnh quy mô chủ động
+- Giảm thời gian quản trị thủ công
+- Tăng độ tin cậy với cơ chế ổn định và giám sát
 
-#### Monasca OpenStack Performance Optimization (2021)
-- Optimized Monasca OpenStack monitoring system to handle 10,000 RPS:
-  - Developed custom API service to improve request handling
-  - Implemented Kong API Gateway for authentication and rate limiting:
-    - Centralized authentication mechanism using Kong
-    - Configured rate limiting and request throttling
-    - Improved request routing and load balancing
-- **Impact**: Increased system throughput from 1,000 RPS to 10,000 RPS, enabling large-scale monitoring
+## Bài học kinh nghiệm
 
-### Reduced 70% of cost of the Datadog
-- The developed service collects metrics from Prometheus and pushes them to Datadog, helping us reduce the cost of Datadog custom metrics by 70%.
+### Thiết kế hệ thống
+- Tầm quan trọng của cơ chế ổn định để tránh thay đổi quá thường xuyên
+- Cần cân nhắc kỹ các ngưỡng và quy tắc điều chỉnh quy mô
 
-### Observability & Monitoring
-#### Observability Platform Enhancement (2021-2022)
-- Designed and implemented monitoring stack using Prometheus, Datadog
-- Implemented distributed tracing with OpenTelemetry
-- Built custom dashboards and alerting rules
-- **Impact**: Reduced MTTR from 40 minutes to 15 minutes
+### Kỹ thuật
+- Sử dụng controller-runtime hiệu quả cho Kubernetes operators
+- Xử lý các edge case trong quá trình điều chỉnh quy mô
+- Quản lý state và reconciliation loop
 
-### Operational Excellence
-#### Production System Reliability
-- Maintained 99.99% uptime for production systems
-- 24/7 on-call rotation and incident response:
-  - Average resolution time of 15 minutes
-  - Established incident management playbooks and runbooks
-  - Implemented automated incident response procedures:
-    - Built automated issue tracking tool with instant system state capture
-    - Developed service for auto-generating screenshots of relevant dashboards
-    - Integrated with alerting system for immediate visual context
-  - Reduced MTTR by 60% through process improvements
+### Vận hành
+- Tầm quan trọng của logging và monitoring
+- Cần có chiến lược rollback cho các thay đổi quy mô
+- Đảm bảo tính nhất quán của cluster trong quá trình scale
 
-#### Automation Initiatives
-- Automated 80% of routine operations tasks:
-  - Built self-service platform for database operations:
-    - Automated backup/restore for OpenSearch, Redis, DynamoDB, PostgreSQL
-    - Implemented point-in-time recovery with snapshot management
-    - Created cross-region backup replication
-    - Built one-click backup/restore web interface
-    - Automated backup verification and monitoring
-  - Developed a workflow to automate replace docker image public to private in the kubernetes cluster, automatically update the image in the kubernetes cluster and push to the private registry
-  - Created user access management and audit system
-  - Implemented routine maintenance automation
+## Mã nguồn và tài liệu
+[Liên kết đến mã nguồn và tài liệu chi tiết]
 
-### Leadership
-- Reduced deployment time from 45 minutes to 10 minutes
-- Established best practices and documentation standards
-
-## 📫 Contact
-- Email: vanchonlee@gmail.com
-- LinkedIn: www.linkedin.com/in/chonle-devops-sre
-- GitHub: github.com/vanchonlee
+Bạn có thể điều chỉnh và bổ sung thêm các phần cụ thể dựa trên kinh nghiệm thực tế của mình với dự án này.
