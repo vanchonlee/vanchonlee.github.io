@@ -43,7 +43,6 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
 #### Kubernetes Platform Automation (2022-2023)
 - Built an automated platform for EKS cluster provisioning
 - Developed Golang operators for automated resource management:
-  - Created custom OpenSearch autoscaling operator
   - Implemented intelligent scaling based on resource metrics and search patterns
   - Built monitoring and alerting for scaling events:
     - Prometheus metrics for cluster scaling operations
@@ -51,6 +50,12 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
     - Real-time alerts for scaling failures or threshold breaches
 - Implemented GitOps workflow with ArgoCD
 - **Impact**: Reduced infrastructure provisioning time by 70%, increased developer productivity by 50%
+
+#### OpenSearch Autoscaling Operator (2024-2025)
+- Developed a custom Kubernetes operator for automated OpenSearch cluster scaling
+- Implemented intelligent autoscaling based on resource utilization and scheduling
+- **Impact**: Reduced operational costs and improved system reliability
+- **Detailed Documentation**: [OpenSearch Operator Documentation](docs/opensearch/index.md)
 
 ### Infrastructure Optimization
 #### Cloud Cost Optimization Initiative (2020-2021)
@@ -107,6 +112,22 @@ Senior SRE/DevOps Engineer with 5 years of experience in building and operating 
 ### Leadership
 - Reduced deployment time from 45 minutes to 10 minutes
 - Established best practices and documentation standards
+
+## 📚 Technical Documentation
+Detailed technical documentation and architecture designs for key projects:
+
+### Infrastructure & Platform
+- [OpenSearch Autoscaling Operator](docs/opensearch/index.md) - Custom Kubernetes operator for OpenSearch cluster management
+<!-- Future docs can be added here -->
+<!-- - [Project Name](docs/project-name/index.md) - Brief description -->
+
+### Automation & Tools
+<!-- Future docs can be added here -->
+<!-- - [Tool Name](docs/tools/tool-name/index.md) - Brief description -->
+
+### Architecture & Design
+<!-- Future docs can be added here -->
+<!-- - [System Name](docs/architecture/system-name/index.md) - Brief description -->
 
 ## 📫 Contact
 - Email: vanchonlee@gmail.com
